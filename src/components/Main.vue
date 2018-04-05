@@ -19,7 +19,6 @@ export default {
     }
   },
   mounted() {
-
   },
   methods: {
 
@@ -29,8 +28,8 @@ export default {
 
     login(){
       this.axios
-      .post('/user/login.json',{
-        id : "chopo01"
+      .post('/api/user',{
+        no : 1
       })
       .then(response => {
         if(response.data.success){
