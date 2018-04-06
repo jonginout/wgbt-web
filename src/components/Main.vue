@@ -45,7 +45,7 @@ export default {
 
 <style lang="scss">
 .hello{
-  h1, h2 {
+  h1, h2 { 
     font-weight: normal;
   }
   ul {
