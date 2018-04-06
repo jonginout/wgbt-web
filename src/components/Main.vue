@@ -28,13 +28,14 @@ export default {
 
     login(){
       this.axios
-      .post('/api/user',{
+      .post('/user',{
         no : 1
       })
       .then(response => {
-        if(response.data.success){
-          this.user = response.data.result
-        }
+        console.log(response.data)
+        // if(response.data.success){
+        //   this.user = response.data.result
+        // }
       })
     }
 
@@ -43,6 +44,7 @@ export default {
 </script>
 
 <style lang="scss">
+.hello{
   h1, h2 {
     font-weight: normal;
   }
@@ -57,4 +59,5 @@ export default {
   a {
     color: #42b983;
   }
+}
 </style>

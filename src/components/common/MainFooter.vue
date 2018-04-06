@@ -1,8 +1,8 @@
 <template>
 <div class="footer_container box">
   <div class="footer_content">
-    <img class="logo" src="https://s3.ap-northeast-2.amazonaws.com/dankookie/static/logo.png" alt="logo">
-    <ul class="links">
+    <img class="logo" src="/static/images/logos/basic_logo.png" alt="logo">
+    <!-- <ul class="links">
       <li>
         <router-link to="/terms">약관 및 운영수칙</router-link>
         <span class="vertical_bar"></span>
@@ -18,8 +18,8 @@
       <li>
         <a href="#">광고문의</a>
       </li>
-    </ul>
-    <p class="copyright">Copyright ⓒ Dankookie All rights reserved</p>
+    </ul> -->
+    <p class="copyright">Copyright ⓒ WGBT All rights reserved</p>
   </div>
 </div>
 </template>
@@ -43,7 +43,6 @@
     .logo {
       display: block;
       margin: 10px auto;
-      width: 90px;
     }
 
     .links {
