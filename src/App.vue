@@ -1,6 +1,10 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+    <main-header></main-header>
+
+    <div id="main_view">
+      <router-view></router-view>
+    </div>
 
     <main-footer></main-footer>
   </div>
@@ -19,11 +23,8 @@
   @import url('http://fonts.googleapis.com/earlyaccess/notosanskr.css');
   @import './style/style.scss';
 
-  $background-color : #f5f5f5;
-
-  body {
-    background-color: $background-color;
-    font-family: 'Noto Sans KR', sans-serif;
+  #main_view{
+    margin: 80px 0px 10px 0px;
+    padding: 0px 50px;
   }
-
 </style>

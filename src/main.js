@@ -8,9 +8,13 @@ import axios from './customAxios.js';
 import VueMoment from 'vue-moment'
 require('moment/locale/ko')
 
+import 'expose-loader?$!expose-loader?jQuery!jquery'
+import 'bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css'
+//https://getbootstrap.com/docs/4.0/examples/ 부트스트랩 4버젼을 사용해야함 꼮
 
 import MainFooter from '@/components/common/MainFooter.vue';
-
+import MainHeader from '@/components/common/MainHeader.vue';
 
 Vue.config.productionTip = false
 
@@ -19,6 +23,7 @@ Vue.use(VueMoment)
 
 
 Vue.component('main-footer', MainFooter)  // 전역 컴포넌트
+Vue.component('main-header', MainHeader)
 
 /* eslint-disable no-new */
 new Vue({

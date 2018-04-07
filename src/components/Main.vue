@@ -19,7 +19,6 @@ export default {
     }
   },
   mounted() {
-
   },
   methods: {
 
@@ -29,13 +28,14 @@ export default {
 
     login(){
       this.axios
-      .post('/user/login.json',{
-        id : "chopo01"
+      .post('/user',{
+        no : 1
       })
       .then(response => {
-        if(response.data.success){
-          this.user = response.data.result
-        }
+        console.log(response.data)
+        // if(response.data.success){
+        //   this.user = response.data.result
+        // }
       })
     }
 
@@ -44,7 +44,8 @@ export default {
 </script>
 
 <style lang="scss">
-  h1, h2 {
+.hello{
+  h1, h2 { 
     font-weight: normal;
   }
   ul {
@@ -58,4 +59,5 @@ export default {
   a {
     color: #42b983;
   }
+}
 </style>

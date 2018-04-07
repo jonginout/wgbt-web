@@ -33,10 +33,11 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
-        use: [
-          'vue-style-loader',
-          'css-loader'
-        ],
+        loader: 'style-loader'
+        // use: [
+        //   'vue-style-loader',
+        //   'css-loader'
+        // ],
       },
       {
         test: /\.scss$/,
