@@ -5,6 +5,7 @@
     
     <button @click="onClickMakeToken">MakeToken</button>
     <button @click="onClickGetToken">GetToken</button>
+    <button @click="onClickGetCookie">GetCookie</button>
     <br><br>
 
     <router-link to="/hello">안녕??</router-link>
@@ -16,7 +17,8 @@ export default {
   data () {
     return {
       user : {},
-      mainText: '안뇽ㅂㅂㅂ'
+      mainText: '안뇽ㅂㅂㅂ',
+      token : ''
     }
   },
   mounted() {
@@ -29,6 +31,9 @@ export default {
     onClickGetToken() {
       this.getToken()
     },
+    onClickGetCookie(){
+      this.getCookie()
+    },
 
     setToken(){
       this.axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('jwtToken');
@@ -38,7 +43,10 @@ export default {
         no : 1
       })
       .then(response => {
-        console.log(response.data)
+        this.token = response.headers.authorization
+        // 이건 쿠키에 저장하는게 좋을 것 같기도???
+        console.log(response.headers.authorization)
+        console.log(document.cookie)
       })
       .catch(function (error) {
         console.log(error);
@@ -48,8 +56,9 @@ export default {
     getToken(){
       this.axios
       .get('/user', {
-        params: {
-          no : 1
+        headers: {
+          // 쿠키로
+          // "Authorization": "eyJ0eXAiOiJKV1QiLCJyZWdEYXRlIjoxNTIzMTY3MzcxNTYwLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwidXNlckluZm8iOnsibm8iOjEsImlkIjoiY3Y2MTMiLCJuYW1lIjoi6rmA7KKF7J24MSIsImZvcm1hdHRlZENyZWF0ZWREYXRlIjoiMTjrhYQgMDPsm5QgMzHsnbwgMTA6NDg6MzMiLCJmb3JtYXR0ZWRNb2RpZmllZERhdGUiOiIxOOuFhCAwNOyblCAwNOydvCAxOTowNDoxOCJ9fQ.Y74hBmdPPKrYQe4gOihZMehWDeWZeMqOtJ_xT8TtIAE"
         }
       })
       .then(function (response) {
@@ -58,8 +67,11 @@ export default {
       .catch(function (error) {
         console.log(error);
       });
-    }
+    },
 
+    getCookie(){
+      console.log(document.cookie)
+    }
 
 
   }
