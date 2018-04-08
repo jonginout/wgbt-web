@@ -36,8 +36,6 @@ export default {
     },
 
     setToken(){
-      this.axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('jwtToken');
-
       this.axios
       .post('/user/make',{
         no : 1
@@ -46,7 +44,6 @@ export default {
         this.token = response.headers.authorization
         // 이건 쿠키에 저장하는게 좋을 것 같기도???
         console.log(response.headers.authorization)
-        console.log(document.cookie)
       })
       .catch(function (error) {
         console.log(error);
@@ -56,9 +53,9 @@ export default {
     getToken(){
       this.axios
       .get('/user', {
-        headers: {
+        params: {
           // 쿠키로
-          // "Authorization": "eyJ0eXAiOiJKV1QiLCJyZWdEYXRlIjoxNTIzMTY3MzcxNTYwLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwidXNlckluZm8iOnsibm8iOjEsImlkIjoiY3Y2MTMiLCJuYW1lIjoi6rmA7KKF7J24MSIsImZvcm1hdHRlZENyZWF0ZWREYXRlIjoiMTjrhYQgMDPsm5QgMzHsnbwgMTA6NDg6MzMiLCJmb3JtYXR0ZWRNb2RpZmllZERhdGUiOiIxOOuFhCAwNOyblCAwNOydvCAxOTowNDoxOCJ9fQ.Y74hBmdPPKrYQe4gOihZMehWDeWZeMqOtJ_xT8TtIAE"
+          "Authorization": this.token
         }
       })
       .then(function (response) {
