@@ -53,10 +53,10 @@ export default {
     getToken(){
       this.axios
       .get('/user', {
-        params: {
-          // 쿠키로
-          "Authorization": this.token
-        }
+        // params: {
+        //   // 쿠키로
+        //   "Authorization": this.token
+        // }
       })
       .then(function (response) {
         console.log(response.data)
