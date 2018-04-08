@@ -11,15 +11,15 @@
           <li class="nav-item active">
             <router-link to="/" class="nav-link">Main</router-link>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" v-if="!isLoggedIn">
             <router-link to="/login" class="nav-link">Login</router-link>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+          <li class="nav-item dropdown" v-if="isLoggedIn">
+            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{me.id}}</a>
             <div class="dropdown-menu" aria-labelledby="dropdown01">
               <a class="dropdown-item" href="#">Action</a>
               <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
+              <a class="dropdown-item" @click="logout">Logout</a>
             </div>
           </li>
         </ul>
@@ -33,18 +33,34 @@
 </template>
 
 <script>
+import User from '../../models/user.js';
+import eventBus from '../../eventBus.js';
 
 export default {
   name: 'MainHeader',
   data() {
     return {
-
+      isLoggedIn: false,
+      me: {}
     }
   },
   mounted() {
+    eventBus.$on('didLogin', this.fetchMe);
   },
   methods: {
 
+    logout() {
+      User
+      .logout()
+      .then(() => {
+        this.fetchMe();
+        this.$router.push('/');
+      })
+    },
+    fetchMe() {
+      this.isLoggedIn = User.data.isLoggedIn;
+      this.me = User.data.me;
+    }
   }
 }
 </script>

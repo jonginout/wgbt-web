@@ -18,6 +18,10 @@ import MainHeader from '@/components/common/MainHeader.vue';
 
 Vue.config.productionTip = false
 
+import User from './models/user.js';
+
+User.init();
+
 Vue.use(VueAxios, axios);
 Vue.use(VueMoment)
 

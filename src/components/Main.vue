@@ -3,9 +3,7 @@
     <h1>{{mainText}}</h1>
     <h3 v-if="user">{{user.name}}</h3>
     
-    <button @click="onClickMakeToken">MakeToken</button>
-    <button @click="onClickGetToken">GetToken</button>
-    <button @click="onClickGetCookie">GetCookie</button>
+    <button @click="onClickMe">GetMe</button>
     <br><br>
 
     <router-link to="/hello">안녕??</router-link>
@@ -13,6 +11,8 @@
 </template>
 
 <script>
+import User from '../models/user.js';
+
 export default {
   data () {
     return {
@@ -25,50 +25,12 @@ export default {
   },
   methods: {
 
-    onClickMakeToken() {
-      this.setToken()
-    },
-    onClickGetToken() {
-      this.getToken()
-    },
-    onClickGetCookie(){
-      this.getCookie()
-    },
-
-    setToken(){
-      this.axios
-      .post('/user/make',{
-        no : 1
+    onClickMe(){
+      User.me()
+      .then(data => {
+        console.log(data)
       })
-      .then(response => {
-        this.token = response.headers.authorization
-        // 이건 쿠키에 저장하는게 좋을 것 같기도???
-        console.log(response.headers.authorization)
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
     },
-
-    getToken(){
-      this.axios
-      .get('/user', {
-        // params: {
-        //   // 쿠키로
-        //   "Authorization": this.token
-        // }
-      })
-      .then(function (response) {
-        console.log(response.data)
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-    },
-
-    getCookie(){
-      console.log(document.cookie)
-    }
 
 
   }
