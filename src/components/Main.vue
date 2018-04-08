@@ -3,7 +3,8 @@
     <h1>{{mainText}}</h1>
     <h3 v-if="user">{{user.name}}</h3>
     
-    <button @click="onClickTest">Test</button>
+    <button @click="onClickMakeToken">MakeToken</button>
+    <button @click="onClickGetToken">GetToken</button>
     <br><br>
 
     <router-link to="/hello">안녕??</router-link>
@@ -22,22 +23,44 @@ export default {
   },
   methods: {
 
-    onClickTest() {
-      this.login()
+    onClickMakeToken() {
+      this.setToken()
+    },
+    onClickGetToken() {
+      this.getToken()
     },
 
-    login(){
+    setToken(){
+      this.axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('jwtToken');
+
       this.axios
-      .post('/user',{
+      .post('/user/make',{
         no : 1
       })
       .then(response => {
         console.log(response.data)
-        // if(response.data.success){
-        //   this.user = response.data.result
-        // }
       })
+      .catch(function (error) {
+        console.log(error);
+      });
+    },
+
+    getToken(){
+      this.axios
+      .get('/user', {
+        params: {
+          no : 1
+        }
+      })
+      .then(function (response) {
+        console.log(response.data)
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
     }
+
+
 
   }
 }
