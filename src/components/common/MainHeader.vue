@@ -76,6 +76,7 @@ export default {
     }
 
     .nav-item.dropdown{
+      cursor: pointer;
       .dropdown-menu{
         background-color: #dae0e5;
         .dropdown-item{
