@@ -6,6 +6,7 @@ import router from './router'
 import VueAxios from 'vue-axios'; // vue에서 axios를 사용하기 위한 모듈
 import axios from './customAxios.js';
 import VueMoment from 'vue-moment'
+import VueRange from 'vue-for-range';
 require('moment/locale/ko')
 
 import 'expose-loader?$!expose-loader?jQuery!jquery'
@@ -15,6 +16,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 
 import MainFooter from '@/components/common/MainFooter.vue';
 import MainHeader from '@/components/common/MainHeader.vue';
+import Pagination from '@/components/common/Pagination.vue';
 
 Vue.config.productionTip = false
 
@@ -24,10 +26,11 @@ User.init();
 
 Vue.use(VueAxios, axios);
 Vue.use(VueMoment)
-
+Vue.use(VueRange);
 
 Vue.component('main-footer', MainFooter)  // 전역 컴포넌트
 Vue.component('main-header', MainHeader)
+Vue.component('pagination', Pagination)
 
 /* eslint-disable no-new */
 new Vue({

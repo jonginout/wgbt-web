@@ -1,9 +1,8 @@
 <template>
   <div class="login_form_container">
     <div class="row">
-      <div class="col-md-3"></div>
 
-        <div class="col-md-6">
+        <div class="col-md-6 offset-md-3">
           <h2 class="form-signin-heading">Please Login in</h2>
           <div class="form" @keyup.enter="onSubmitLogin">
             <input type="text" class="form-control" placeholder="Id" required="" autofocus="" v-model="id">
@@ -18,7 +17,6 @@
           </div>
         </div>
 
-        <div class="col-md-3"></div>
       </div>
     </div>
 </template>
