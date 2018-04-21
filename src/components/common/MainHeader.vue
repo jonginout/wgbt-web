@@ -22,7 +22,7 @@
             <div class="dropdown-menu" aria-labelledby="dropdown01">
               <a class="dropdown-item" href="#">마이페이지</a>
               <a class="dropdown-item" href="#">쪽지함</a>
-              <a class="dropdown-item" @click="로그아웃">Logout</a>
+              <a class="dropdown-item" @click="logout">Logout</a>
             </div>
           </li>
         </ul>
