@@ -5,6 +5,7 @@ import HelloWorld from '@/components/HelloWorld'
 import Main from '@/components/Main'
 import LoginForm from '@/components/LoginForm'
 import Community from '@/components/Community'
+import SignUP from '@/components/SignUP'
 
 Vue.use(Router)
 
@@ -13,7 +14,8 @@ export default new Router({
   routes: [
     {path: '/', component : Main},
     {path: '/hello', component : HelloWorld},
-    {path: '/login', component : LoginForm},
+    {path: '/login', name: 'login', component : LoginForm},
     {path: '/community', component : Community},
+    {path: '/signUp', component : SignUP},
   ]
 })

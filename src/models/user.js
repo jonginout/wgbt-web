@@ -55,7 +55,7 @@ export default {
             });
         });
     },
-
+    
     logout() {
         return new Promise((resolve, reject) => {
             axios
@@ -66,6 +66,31 @@ export default {
                     this.init();
                     resolve();
                 }
+            })
+        });
+    },
+    
+    idCheck(data) {
+        return new Promise((resolve, reject) => {
+            axios
+            .post('/user/idCheck', data)
+            .then(res => {
+                if(res.data.success) {
+                    resolve(res.data.check);
+                }
+            })
+        });
+    },
+    
+    signUp(data) {
+        return new Promise((resolve, reject) => {
+            axios
+            .post('/user/signUp', data)
+            .then(res => {
+                if(res.data.success) {
+                    resolve(res.data);
+                }
+                reject(new Error(res.data.success));
             })
         });
     }

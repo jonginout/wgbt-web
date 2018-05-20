@@ -17,6 +17,9 @@
           <li class="nav-item" v-if="!isLoggedIn">
             <router-link to="/login" class="nav-link" active-class="active">로그인</router-link>
           </li>
+          <li class="nav-item" v-if="!isLoggedIn">
+            <router-link to="/signUp" class="nav-link" active-class="active">회원가입</router-link>
+          </li>
           <li class="nav-item dropdown" v-if="isLoggedIn">
             <a class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{me.id}}</a>
             <div class="dropdown-menu" aria-labelledby="dropdown01">

@@ -3,7 +3,7 @@
     <div class="row">
 
         <div class="col-md-6 offset-md-3">
-          <h2 class="form-signin-heading">Please Login in</h2>
+          <h2 class="form-signin-heading">{{signinHeadTitle}}</h2>
           <div class="form" @keyup.enter="onSubmitLogin">
             <input type="text" class="form-control" placeholder="Id" required="" autofocus="" v-model="id">
             <input type="password" class="form-control" placeholder="Password" required="" v-model="pw">
@@ -28,6 +28,7 @@ export default {
   name: 'LoginForm',
   data() {
     return {
+      signinHeadTitle: this.$route.params.userId ? this.$route.params.userId+"님 회원 가입 되었습니다." : "Please Login",
       id : '',
       pw : '',
       save : false,
